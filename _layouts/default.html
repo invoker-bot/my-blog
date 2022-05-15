@@ -2,7 +2,18 @@
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
   {%- include head.html -%}
-
+  <head>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$']],
+        processEscapes: true
+      }
+    };
+    </script>
+  </head>
   <body>
 
     {%- include header.html -%}
