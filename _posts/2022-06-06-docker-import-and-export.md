@@ -15,7 +15,7 @@ Docker拿给别人使用时，就需要将镜像或者容器导出给别人使�
 
 ## Docker二进制导出
 
-1. 从镜像文件导出
+### 从镜像文件导出
 
 可以使用导出镜像
 
@@ -31,7 +31,7 @@ docker load < IMAGE.tar
 
 即可加载镜像
 
-2. 从容器中导出
+### 从容器中导出
 
 导出容器成为镜像
 
@@ -45,7 +45,7 @@ docker export CONTAINER > CONTAINER.tar
 docker import - IMAGE:tag < CONTAINER.tar
 ```
 
-3. 上传至Docker Hub
+### 上传至Docker Hub导入
 
 ```shell
 # 首先登录
