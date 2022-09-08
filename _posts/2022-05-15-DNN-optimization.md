@@ -7,9 +7,11 @@ categories: DNN
 
 # 优化方法
 
+本文使用$\theta$表示神经网络中的可训练参数，使用$J(\theta)$表示给定网络参数下，训练集上的损失函数值，因此。由于找不到一个通用的方法直接求出损失函数的最小值，因此目前的优化过程基本上是根据梯度下降的过程。由于神经网络中参数很多，采用二阶方法需要很大的计算量，得不偿失，故通常使用一阶的优化算法。为了加快计算速度，一般都是使用小批量下降的过程，即每次算完该小批量所有样本的损失后再更新参数。
+
 ## GD (Gradient Descent)
 
-$$x_{t+1} = x_t - \eta_t \nabla f(x_t)$$
+$$\theta_{t+1} = \theta_t - \eta \nabla_{\theta}J(\theta_t)$$
 
 _优点：_
 
@@ -23,9 +25,9 @@ _缺点：_
 
 ## SGD (Stochastic Gradient Descent)
 
-$$x_{t+1} = x_t - \eta_t g_t$$
+$$\theta_{t+1} = \theta_t - \eta_t g_t$$
 
-且$E[g_t]=\nabla f(x_t)$
+且$E[g_t]=\nabla J(\theta_t)$
 
 _优点：_
 
@@ -47,24 +49,24 @@ _变形：_
 
 **SGD-M (Stochastic Gradient Descent Momentum)**
 
-$$x_{t+1} = x_t - (\gamma m_{t-1} + \eta_t g_t)$$
+$$\theta_{t+1} = \theta_t - (\gamma m_{t-1} + \eta_t g_t)$$
 
-且$E[g_t]=\nabla f(x_t)$
+且$E[g_t]=\nabla J(\theta_t)$
 
 引入了动量的概念，有效地减少了震荡。
 
 **NAG (Nesterov Accelerated Gradient)**
 
-$$x_{t+1} = x_t - (\gamma m_{t-1} + \eta_t \nabla f(x_t - \gamma m_{t-1}))$$
+$$\theta_{t+1} = \theta_t - (\gamma m_{t-1} + \eta_t \nabla J(\theta_t - \gamma m_{t-1}))$$
 
 
 改进了**SGD-M**，使之更精确；。
 
 ## AdaGrad
 
-$$x_{t+1} = x_t - \eta_t \nabla f(x_t)$$
+$$\theta_{t+1} = \theta_t - \eta_t \nabla J(\theta_t)$$
 
-其中$\eta_t=\eta/\sqrt{n_t+\delta}$，$n_t=\sum_{i=1}^t f(x_i).*f(x_i)$
+其中$\eta_t=\eta/\sqrt{n_t+\delta}$，$n_t=\sum_{i=1}^t J(\theta_i)*J(\theta_i)$
 
 优点：
 
@@ -75,12 +77,16 @@ $$x_{t+1} = x_t - \eta_t \nabla f(x_t)$$
 
 * 难以估计初始梯度大小，导致参数$\eta$十分敏感。
 * 叠加所有时间的梯度可能导致，初始误差的累积。
-* 学习率趋于0时可能提前结束训练。
+* 学习率将逐渐趋于0，可能提前结束训练，特别是初始梯度较大的情况。
 
 ## AdaDelta
 
-令
-$$E[g.^2]_t=\rho * E[g^2]_{t-1} + (1-\rho) * g^2_t$$
-则
-$$x_{t+1}=x_t-$$
+对**AdaGrad**可以进行一部分改进，
 
+和**SGD**一样，$E[g_t]=\nabla J(\theta_t)$，和**AdaGrad**一样，有
+$$\theta_{t+1}=\theta_t - \eta_t \nabla J(\theta_t)$$
+令
+$$E[g^2]_t=\rho * E[g^2]_{t-1} + (1-\rho) * g^2_t$$
+则
+$$\eta_t=\eta/\sqrt{E[g^2]_t+\delta}$$
+且初始
