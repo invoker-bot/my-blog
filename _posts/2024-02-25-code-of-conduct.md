@@ -9,7 +9,7 @@ categories: code
 
 ## 前端
 
-1. 项目结构
+### 1. 项目结构
 
 在GitHub上建立私有仓库，并使用Vscode，装上Copilot插件。
 
@@ -26,7 +26,7 @@ categories: code
 * styles/ - 存放CSS样式文件。
 * tests/ - 存放单元测试文件。
 
-2. Git Commit
+### 2. Git Commit
 
 提交应该遵循一定的规范<https://www.conventionalcommits.org/en/v1.0.0/>，一定要简要精炼写做了什么样的事儿。
 
@@ -36,7 +36,7 @@ categories: code
 * 示例: feat(login): 实现了登录的页面
 * 修复某个错误(issue)在脚标写：Closes #1
 
-3. 使用框架
+### 3. 使用框架
 
 * 使用Typescript编写页面，使用ES6以上的语法，注释需要遵循tsdoc的规范来标注。
 * 使用Nextjs同构渲染框架，注意区分代码运行在服务端还是客户端。
@@ -47,7 +47,7 @@ categories: code
 * 使用Docker一键部署或测试。
 * 使用Electron构建桌面应用程序，使用React Native构建移动端应用程序。
 
-4. 前后端交互
+### 4. 前后端交互
 
 * 支持Restful和OpenAPI规范，并写上注释。
 * 使用Swagger测试以及生成接口文档。

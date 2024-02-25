@@ -83,7 +83,7 @@ $$\theta_{t+1} = \theta_t - \eta_t \nabla J(\theta_t)$$
 
 对**AdaGrad**可以进行一部分改进，
 
-和**SGD**一样，$E[g_t]=\nabla J(\theta_t)$，和**AdaGrad**一样，有
+和**SGD**一样,$E[g_t]=\nabla J(\theta_t)$ 和**AdaGrad**一样，有
 $$\theta_{t+1} = \theta_t - \eta_t \nabla J(\theta_t)$$
 令
 $$E[g^2]_t = \rho * E[g^2]_{t-1} + (1-\rho) * g^2_t$$
