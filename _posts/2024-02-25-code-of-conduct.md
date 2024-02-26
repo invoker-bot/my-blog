@@ -11,7 +11,7 @@ categories: code
 
 ### 1. 项目结构
 
-在GitHub上建立私有仓库，并使用Vscode，装上Copilot插件。
+在GitHub上建立私有仓库，并使用Vscode，装上Copilot插件，一定要经常使用GPT提升工作效率。
 
 * README.md 以Markdown格式的项目说明书，简要介绍项目内容
 * .env 环境变量文件，不要上传至仓库
@@ -46,9 +46,13 @@ categories: code
 * 数据验证使用class-validator和class-transformer。
 * 使用Docker一键部署或测试。
 * 使用Electron构建桌面应用程序，使用React Native构建移动端应用程序。
+* 使用JWT存储登录状态。
 
 ### 4. 前后端交互
 
 * 支持Restful和OpenAPI规范，并写上注释。
 * 使用Swagger测试以及生成接口文档。
 
+### 5. 国际化
+
+* 不要硬编码字符串，使用i18n之类的语言框架，必须支持至少中英的多种语言。
