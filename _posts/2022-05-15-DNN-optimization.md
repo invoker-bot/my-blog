@@ -83,19 +83,23 @@ $$\theta_{t+1} = \theta_t - \eta_t \nabla J(\theta_t)$$
 
 对**AdaGrad**可以进行一部分改进，
 
-和**SGD**一样,$E[g_t]=\nabla J(\theta_t)$ 和**AdaGrad**一样，有
+和**SGD**一样，$E[g_t]=\nabla J(\theta_t)$ 和**AdaGrad**一样，有
+
 $$\theta_{t+1} = \theta_t - \eta_t \nabla J(\theta_t)$$
+
 令
-$$E[g^2]_t = \rho * E[g^2]_{t-1} + (1-\rho) * g^2_t$$
-其中,$\rho$是学习衰减率,非常接近于1,学习率的计算如下:
-$$\eta_t = \sqrt{\sum \Delta \theta^2_{t-1} + \delta}/\sqrt{E[g^2]_t+\delta}$$
 
+$$E[g^2]_t = \rho \cdot E[g^2]_{t-1} + (1-\rho) \cdot g^2_t$$
 
-优点:
+其中，$\rho$是学习衰减率，非常接近于1，学习率的计算如下：
 
-* 解决了AdaGrad方法中学习率的一些问题,学习率无需手动设置,并且根据参数的更新历史自动调整学习率,也减少了学习率降低过快的问题,特别适用于处理稀疏数据.
+$$\eta_t = \frac{\sqrt{\sum \Delta \theta^2_{t-1} + \delta}}{\sqrt{E[g^2]_t+\delta}}$$
 
-缺点:
+优点：
 
-* 算法仍然对超参数$\rho$和$\delta$的选择非常敏感.
-* 当初始化较差或者复杂问题时,收敛速度可能比其它算法更慢.
+* 解决了AdaGrad方法中学习率的一些问题，学习率无需手动设置，并且根据参数的更新历史自动调整学习率，也减少了学习率降低过快的问题，特别适用于处理稀疏数据。
+
+缺点：
+
+* 算法仍然对超参数$\rho$和$\delta$的选择非常敏感。
+* 当初始化较差或者复杂问题时，收敛速度可能比其它算法更慢。
